@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity"
+    tools:visibility="visible">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="729dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="199dp"
+            android:layout_height="317dp"
+            android:orientation="vertical"><![CDATA[
+
+            />
+
+            ]]>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="165dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#28FF28"
+                android:onClick="show_Toast"
+                android:text="TOAST" />
+
+            <Button
+                android:id="@+id/ze_ro"
+                android:layout_width="163dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#8E8E8E"
+                android:insetTop="8dp"
+                android:onClick="set_zero"
+                android:text="zero" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="163dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#0072E3"
+                android:insetTop="8dp"
+                android:onClick="add_count"
+                android:text="Count" />/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/show_count"
+                android:layout_width="match_parent"
+                android:layout_height="299dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="#F9F900"
+                android:gravity="center_vertical"
+                android:text="0"
+                android:textAlignment="center"
+                android:textColor="#004B97"
+                android:textSize="128sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
