@@ -15,6 +15,7 @@
         android:label="109590020_HW3-2"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.example.android.HW_3_2.MainActivity2"
