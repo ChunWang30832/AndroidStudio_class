@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndroidExample/android-fundamentals-apps-v2-master/android-fundamentals-apps-v2-master/HelloToast/app/src/main/res/layout-land/activity_main.xml" value="0.25" />
+        <entry key="..\:/AndroidExample/android-fundamentals-apps-v2-master/android-fundamentals-apps-v2-master/HelloToast/app/src/main/res/layout-xlarge/activity_main.xml" value="0.1" />
+        <entry key="..\:/AndroidExample/android-fundamentals-apps-v2-master/android-fundamentals-apps-v2-master/HelloToast/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/user/Desktop/hw4.1/109590020HW4-1/app/src/main/res/layout/activity_main.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

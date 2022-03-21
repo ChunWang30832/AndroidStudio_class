@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="1dp">
+
+        <EditText
+            android:id="@+id/web_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:text="url"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/web_b"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:backgroundTint="#ADADAD"
+            android:text="OPEN WEBSITE"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/loca_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="location"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Button
+            android:id="@+id/loca_b"
+            android:layout_width="173dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:backgroundTint="#ADADAD"
+            android:text="open location"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/text_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="text"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/text_b"
+            android:layout_width="176dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:backgroundTint="#ADADAD"
+            android:text="share this text"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="245dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#ADADAD"
+        android:text="take a picture"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="72dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
