@@ -1,0 +1,14 @@
+Question1.
+The second Activity is added as a Java class, the XML layout file is created, and the AndroidManifest.xml file is changed to declare a second Activity.
+
+Question2.
+The Up button in the app bar no longer appears in the second Activity to send the user back to the parent Activity.
+
+Question3.
+new Intent(Context context, Class<?> class).
+
+Question4.
+As an Intent extra.
+
+Question5.
+All of the above.
