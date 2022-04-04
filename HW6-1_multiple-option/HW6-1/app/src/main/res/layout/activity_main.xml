@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="309dp"
+        android:layout_height="735dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <CheckBox
+            android:id="@+id/o1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:checked="false"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
+            android:text="Chocolate syrup"
+            android:textAlignment="textStart"
+            android:textSize="20dp" />
+
+        <CheckBox
+            android:id="@+id/o2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:checked="false"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
+            android:text="Sprinkles"
+            android:textAlignment="textStart"
+            android:textSize="20dp" />
+
+        <CheckBox
+            android:id="@+id/o3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:checked="false"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
+            android:text="Crushed nuts"
+            android:textAlignment="textStart"
+            android:textSize="20dp" />
+
+        <CheckBox
+            android:id="@+id/o4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:checked="false"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
+            android:text="Cherries"
+            android:textAlignment="textStart"
+            android:textSize="20dp" />
+
+        <CheckBox
+            android:id="@+id/o5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:checked="false"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
+            android:text="Orio cookie crumbles"
+            android:textAlignment="textStart"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="173dp"
+            android:layout_height="58dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:onClick="showtext"
+            android:text="show toast" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
