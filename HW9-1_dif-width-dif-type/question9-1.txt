@@ -1,0 +1,11 @@
+Question 1
+Which resource qualifier is used most frequently to select for tablets? Choose one:
+A:Smallest screen width
+
+Question 2
+Which folder would hold the `strings.xml` file for translation into French for Canada? Choose one:
+A: res/values-fr-rCA/
+
+Question 3
+Which folder is for XML files that contain strings, integers, and colors? Choose one:
+A: res/values
