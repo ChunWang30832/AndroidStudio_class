@@ -1,0 +1,25 @@
+Question 1
+For a ProgressBar:
+1.How do you determine the range of values that a ProgressBar can show?
+A:use the default settings of the "ProgressBar" from 0 to 100.
+
+2.How do you change how much of the progress bar is filled in?
+A:use "publishProgress()" to update the progressbar.
+
+Question 2
+If an AsyncTask is defined as follows:
+
+private class DownloadFilesTask extends AsyncTask<URL, Integer, Long>
+
+1.What is the type of the value that is passed to doInBackground() in the AsyncTask?
+A:java=private class DownloadFilesTask extends AsyncTask<URL, Integer, Long>
+
+2.What is the type of the value that is passed to the callback that reports the progress of the task?
+A:integer
+
+3.What is the type of the value that is passed to the callback that is executed when the task completes?
+A:long
+
+Question 3
+To report progress of the work executed by an AsyncTask, what callback method do you implement, and what method do you call in your AsyncTask subclass?
+A: Implement onProgressUpdate(). Call publishProgress().
