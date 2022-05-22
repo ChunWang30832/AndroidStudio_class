@@ -1,0 +1,15 @@
+Question 1
+What is a system broadcast?
+A:A message that the Android system sends when a system event occurs.
+
+Question 2
+Which pair of methods do you use to register and unregister your broadcast receiver dynamically?
+A:registerReceiver() and unRegisterReceiver().
+
+Question 3
+Which of the following are true?
+A:You can receive the intent used to start activity in your broadcast receiver.
+
+Question 4
+Which class is used to mitigate the security risks of broadcast receivers when the broadcasts are not cross-application (that is, when broadcasts are sent and received by the same app)?
+A:LocalBroadcastManager
