@@ -1,0 +1,11 @@
+Q1.In which lifecycle method do you save the app state to shared preferences?
+A:onPause()
+
+Q2.In which lifecycle method do you restore the app state?
+A:onCreate()
+
+Can you think of a case where it makes sense to have both shared preferences and instance state?
+A:
+saveInstanceState - when frequently moving back and forth between activities
+SharedPreferences - when information for long time.
+you can use both if you need to frequently update data to view and to local storage.
