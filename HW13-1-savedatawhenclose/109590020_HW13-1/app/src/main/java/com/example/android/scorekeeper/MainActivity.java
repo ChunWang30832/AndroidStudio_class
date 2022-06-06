@@ -170,6 +170,14 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    public void reset(View view) {
+        mScore1=0;
+        mScore2=0;
+        mScoreText1.setText(String.valueOf(mScore1));
+        mScoreText2.setText(String.valueOf(mScore2));
+        preferences.edit().remove("text").commit();
+    }
+
     /**
      * Method that is called when the configuration changes,
      * used to preserve the state of the app.
