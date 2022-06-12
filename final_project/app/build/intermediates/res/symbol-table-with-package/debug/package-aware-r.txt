@@ -425,6 +425,7 @@ bool abc_allow_stacked_button_bar
 bool abc_config_actionMenuItemAllCaps
 bool abc_config_closeDialogWhenTouchOutside
 bool abc_config_showMenuShortcutsWhenKeyboardPresent
+color White
 color abc_background_cache_hint_selector_material_dark
 color abc_background_cache_hint_selector_material_light
 color abc_btn_colored_borderless_text_material
@@ -778,6 +779,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable ic_cart
 drawable ic_reset
 drawable img_badminton
 drawable img_baseball
@@ -844,6 +846,7 @@ id bottom
 id button2
 id buttonPanel
 id cancel_action
+id cart_toolbar
 id center
 id center_horizontal
 id center_vertical
@@ -918,6 +921,7 @@ id parent_matrix
 id pin
 id progress_circular
 id progress_horizontal
+id rView
 id radio
 id recyclerView
 id right
@@ -966,6 +970,7 @@ id subTitle
 id subTitleDetail
 id submenuarrow
 id submit_area
+id subword
 id tabMode
 id text
 id text2
@@ -974,6 +979,7 @@ id textSpacerNoTitle
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
+id textview_total
 id time
 id title
 id titleDetail
@@ -994,6 +1000,7 @@ id useLogo
 id view_offset_helper
 id visible
 id withText
+id word
 id wrap
 id wrap_content
 integer abc_config_activityDefaultDur
@@ -1033,6 +1040,7 @@ layout abc_screen_toolbar
 layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
+layout activity_cart
 layout activity_detail
 layout activity_main
 layout design_bottom_navigation_item
@@ -1065,6 +1073,7 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout recycle_layout
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
@@ -1518,6 +1527,8 @@ style Widget_Design_ScrimInsetsFrameLayout
 style Widget_Design_Snackbar
 style Widget_Design_TabLayout
 style Widget_Design_TextInputLayout
+style word_subtitle
+style word_title
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
 styleable ActionBarLayout android_layout_gravity
 styleable ActionMenuItemView android_minWidth

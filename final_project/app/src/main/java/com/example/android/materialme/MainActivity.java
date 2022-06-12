@@ -16,6 +16,7 @@
 
 package com.example.android.materialme;
 
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -204,7 +205,9 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param view The button view that was clicked.
      */
-    public void resetSports(View view) {
-        initializeData();
+    public void goCart(View view) {
+        Intent intent = new Intent(this, cartActivity.class);
+        this.startActivity(intent);
+        //initializeData();
     }
 }
