@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.android.materialme">
+    package="com.example.android.finalproject">
 
     <application
         android:allowBackup="true"
@@ -9,16 +9,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".cartActivity"
+            android:name="com.example.android.finalproject.cartActivity"
             android:exported="false" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.android.finalproject.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DetailActivity" />
+        <activity android:name="com.example.android.finalproject.DetailActivity" />
     </application>
 
 </manifest>
