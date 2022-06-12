@@ -26,6 +26,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,18 +35,18 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 /***
- * The adapter class for the RecyclerView, contains the sports data.
+ * The adapter class for the RecyclerView, contains the Item data.
  */
 class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder>  {
 
     // Member variables.
     private ArrayList<Item> itemData;
+    private ArrayList<Integer> count;
     private Context mContext;
 
     /**
-     * Constructor that passes in the sports data and the context.
-     *
-     * @param Data ArrayList containing the sports data.
+     * Constructor.
+     * @param Data ArrayList containing the Item data.
      * @param context Context of the application.
      */
     ItemsAdapter(Context context, ArrayList<Item> Data) {
@@ -56,38 +57,34 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder>  {
 
     /**
      * Required method for creating the viewholder objects.
-     *
-     * @param parent The ViewGroup into which the new View will be added
-     *               after it is bound to an adapter position.
+     * @param parent The ViewGroup into which the new View will be added after it is bound to an adapter position.
      * @param viewType The view type of the new View.
      * @return The newly created ViewHolder.
      */
     @Override
-    public ItemsAdapter.ViewHolder onCreateViewHolder(
-            ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(mContext).
-                inflate(R.layout.list_item, parent, false));
+    public ItemsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(mContext).inflate(R.layout.list_item, parent, false);
+        ViewHolder viewHolder = new ViewHolder(v);
+        return viewHolder;
     }
 
     /**
      * Required method that binds the data to the viewholder.
-     *
      * @param holder The viewholder into which the data should be put.
      * @param position The adapter position.
      */
     @Override
-    public void onBindViewHolder(ItemsAdapter.ViewHolder holder,
-                                 int position) {
+    public void onBindViewHolder(ItemsAdapter.ViewHolder holder, int position) {
         // Get current sport.
         Item currentItem = itemData.get(position);
-
+        holder.setPosition(position);
+        holder.setItem(currentItem);
         // Populate the textviews with data.
         holder.bindTo(currentItem);
     }
 
     /**
      * Required method for determining the size of the data set.
-     *
      * @return Size of the data set.
      */
     @Override
@@ -97,29 +94,37 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder>  {
 
 
     /**
-     * ViewHolder class that represents each row of data in the RecyclerView.
+     *  RecyclerView 的 ViewHolder.
      */
-    class ViewHolder extends RecyclerView.ViewHolder
-            implements View.OnClickListener{
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         // Member Variables for the TextViews
         private TextView mTitleText;
         private TextView mInfoText;
         private ImageView mSportsImage;
+        private Button btn;
+        private Item curr;
+        private int pos;
 
         /**
          * Constructor for the ViewHolder, used in onCreateViewHolder().
-         *
          * @param itemView The rootview of the list_item.xml layout file.
          */
         ViewHolder(View itemView) {
             super(itemView);
-
             // Initialize the views.
             mTitleText = itemView.findViewById(R.id.title);
             mInfoText = itemView.findViewById(R.id.subTitle);
             mSportsImage = itemView.findViewById(R.id.sportsImage);
-
+            btn = itemView.findViewById(R.id.btn_add);
+            //Add to Cart 按鈕的 OnClick
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    MainActivity.cart.Add(curr.getTitle());
+                    MainActivity.cart.addCount(curr.getTitle());
+                }
+            });
             // Set the OnClickListener to the entire view.
             itemView.setOnClickListener(this);
         }
@@ -132,6 +137,14 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder>  {
             // Load the images into the ImageView using the Glide library.
             Glide.with(mContext).load(
                     currentItem.getImageResource()).into(mSportsImage);
+        }
+
+        void setPosition(int i) {
+            this.pos = i;
+        }
+
+        void setItem(Item item) {
+            this.curr = item;
         }
 
         /**

@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class cartActivity extends AppCompatActivity {
@@ -18,21 +19,23 @@ public class cartActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private cartViewAdapter adapter;
     private final String count = "數量：";
-    @SuppressLint("ResourceAsColor")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
         recyclerView = findViewById(R.id.rView);
 
+        String[] items = this.getIntent().getStringArrayExtra("ItemString[]");
+        ArrayList<Integer> counts = this.getIntent().getIntegerArrayListExtra("counts[]");
+
         LinkedList<String> itemTitle = new LinkedList<>();
         LinkedList<String> itemDescription = new LinkedList<>();
 
-        itemTitle.add("Test Item1");
-        itemDescription.add(count + "測試數量");
-
-        itemTitle.add("Test Item2");
-        itemDescription.add(count + "測試數量");
+        for(int i = 0; i < items.length; i++) {
+            itemTitle.add(items[i]);
+            itemDescription.add(count + Integer.toString(counts.get(i)));
+        }
 
         adapter = new cartViewAdapter(this, itemTitle, itemDescription);
         recyclerView.setAdapter(adapter);

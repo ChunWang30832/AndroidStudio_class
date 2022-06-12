@@ -36,14 +36,15 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 /***
- * Main Activity for the Material Me app, a mock sports news application.
+ * Item是recyclerView顯示的東西
  */
 public class MainActivity extends AppCompatActivity {
 
     // Member variables.
     private RecyclerView mRecyclerView;
-    private ArrayList<Item> mSportsData;
+    private ArrayList<Item> mItemData; //所有Item物件的Data
     private ItemsAdapter mAdapter;
+    public static Cart cart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,54 +53,48 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbarm);
         setSupportActionBar(toolbar);
+        cart = new Cart();
 
-        // Initialize the RecyclerView.
+        // 初始化 RecyclerView.
         mRecyclerView = findViewById(R.id.recyclerView);
 
-        // Set the Layout Manager.
+        // 設定 Layout Manager.
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Initialize the ArrayList that will contain the data.
-        mSportsData = new ArrayList<>();
+        // 初始化 ArrayList.
+        mItemData = new ArrayList<>();
 
-        // Initialize the adapter and set it to the RecyclerView.
-        mAdapter = new ItemsAdapter(this, mSportsData);
+        // 初始化 adapter & 設定 RecyclerView 的 adapter.
+        mAdapter = new ItemsAdapter(this, mItemData);
         mRecyclerView.setAdapter(mAdapter);
-
         // Get the data.
         initializeData();
     }
 
     /**
-     * Initialize the sports data from resources.
+     * 從 Resources 初始化 Item data.
      */
     private void initializeData() {
-        // Get the resources from the XML file.
-        String[] sportsList = getResources()
-                .getStringArray(R.array.sports_titles);
-        String[] sportsInfo = getResources()
-                .getStringArray(R.array.sports_info);
-        TypedArray sportsImageResources = getResources()
-                .obtainTypedArray(R.array.sports_images);
+        // 從 XML 取得 Resource.
+        String[] sportsList = getResources().getStringArray(R.array.sports_titles);
+        String[] sportsInfo = getResources().getStringArray(R.array.sports_info);
+        TypedArray ImgResources = getResources().obtainTypedArray(R.array.sports_images);
 
-        // Clear the existing data (to avoid duplication).
-        mSportsData.clear();
+        // 清空 ArrayList.
+        mItemData.clear();
 
-        // Create the ArrayList of Sports objects with the titles and
-        // information about each sport
+        // 依 Resource 建構 Item 物件 & 設定所有加入購物車次數為0
         for (int i = 0; i < sportsList.length; i++) {
-            mSportsData.add(new Item(sportsList[i], sportsInfo[i],
-                    sportsImageResources.getResourceId(i, 0)));
+            Item obj = new Item(sportsList[i], sportsInfo[i], ImgResources.getResourceId(i, 0));
+            mItemData.add(obj);
         }
 
         // Recycle the typed array.
-        sportsImageResources.recycle();
+        ImgResources.recycle();
 
-        // Notify the adapter of the change.
-        mAdapter.notifyDataSetChanged();
     }
 
-    /////////////////////////////////////////////////////////////////////////////小弟打的///////////////////////////////////
+    //////////////////////////////////////郁鈞打的///////////////////////////////////
     private CharSequence menuIconWithText(Drawable r, String title) {
         r.setBounds(0, 0, r.getIntrinsicWidth(), r.getIntrinsicHeight());
         SpannableString sb = new SpannableString("    " + title);
@@ -146,13 +141,14 @@ public class MainActivity extends AppCompatActivity {
 //////////////////////////////////////////////////////////////////////////////////////////小弟打的/////////////////////
 
     /**
-     * onClick method for th FAB that resets the data.
+     * 購物車按鈕的OnClick.
      *
      * @param view The button view that was clicked.
      */
     public void goCart(View view) {
         Intent intent = new Intent(this, cartActivity.class);
+        intent.putExtra("ItemString[]", cart.cartItem.toArray(new String[0]));
+        intent.putExtra("counts[]", cart.cartCount);
         this.startActivity(intent);
-        //initializeData();
     }
 }

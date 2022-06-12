@@ -61,7 +61,7 @@
             android:text="@string/sports_info_placeholder" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btn_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"

@@ -17,11 +17,10 @@
 package com.example.android.finalproject;
 
 /**
- * Data model for each row of the RecyclerView
+ *  RecyclerView 每一列的資料
  */
 class Item {
 
-    // Member variables representing the title and information about the sport.
     private String title;
     private String info;
     private final int imageResource;
@@ -29,8 +28,8 @@ class Item {
     /**
      * Constructor for the Item data model.
      *
-     * @param title The name if the sport.
-     * @param info Information about the sport.
+     * @param title The name if the item.
+     * @param info Information about the item.
      */
     public Item(String title, String info, int imageResource) {
         this.title = title;
@@ -39,7 +38,7 @@ class Item {
     }
 
     /**
-     * Gets the title of the sport.
+     * 取得 Item 的 Title
      *
      * @return The title of the sport.
      */
@@ -48,9 +47,7 @@ class Item {
     }
 
     /**
-     * Gets the info about the sport.
-     *
-     * @return The info about the sport.
+     * 取得 Item 的 info.
      */
     String getInfo() {
         return info;
