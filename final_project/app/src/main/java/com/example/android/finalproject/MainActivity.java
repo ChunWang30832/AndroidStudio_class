@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
         String nTitle = this.getIntent().getStringExtra("title[]");
         String nDescription = this.getIntent().getStringExtra("description[]");
         String nPrice = this.getIntent().getStringExtra("price[]");
-        Item nObj = new Item(nTitle, nDescription, getResources().obtainTypedArray(R.array.sports_images).getResourceId(0, 0), Integer.parseInt(nPrice));
+        Item nObj = new Item(nTitle, nDescription, getResources().obtainTypedArray(R.array.sports_images).getResourceId(nTitle.length()%12, 0), Integer.parseInt(nPrice));
         mItemData.add(nObj);
     }
 
