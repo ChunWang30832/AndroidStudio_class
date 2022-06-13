@@ -28,6 +28,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Member variables.
     private RecyclerView mRecyclerView;
-    private ArrayList<Item> mItemData; //所有Item物件的Data
+    private static ArrayList<Item> mItemData; //所有Item物件的Data
     private ItemsAdapter mAdapter;
 
     /*public String newtitle[];
@@ -57,9 +58,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
         Toolbar toolbar = findViewById(R.id.toolbarm);
         setSupportActionBar(toolbar);
         cart = new Cart();
@@ -70,14 +68,51 @@ public class MainActivity extends AppCompatActivity {
         // 設定 Layout Manager.
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // 初始化 ArrayList.
-        mItemData = new ArrayList<>();
+
+        if(this.getIntent().getExtras() != null) {
+            newItem();
+        }
+        else if(savedInstanceState != null) {
+            ArrayList<String> titles = savedInstanceState.getStringArrayList("Titles");
+            ArrayList<String> descriptions = savedInstanceState.getStringArrayList("Descriptions");
+            ArrayList<String> prices = savedInstanceState.getStringArrayList("Prices");
+            ArrayList<Integer> imgSrc = savedInstanceState.getIntegerArrayList("Images");
+            initWithSaveIns(titles, descriptions, prices, imgSrc);
+        }
+        else {
+            // 初始化 ArrayList.
+            mItemData = new ArrayList<>();
+            // Get the data.
+            initializeData();
+        }
+
 
         // 初始化 adapter & 設定 RecyclerView 的 adapter.
         mAdapter = new ItemsAdapter(this, mItemData);
         mRecyclerView.setAdapter(mAdapter);
-        // Get the data.
-        initializeData();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        ArrayList<String> titles = new ArrayList<>();
+        ArrayList<String> descriptions = new ArrayList<>();
+        ArrayList<String> prices = new ArrayList<>();
+        ArrayList<Integer> imgSrc = new ArrayList<>();
+        titles.clear();
+        descriptions.clear();
+        prices.clear();
+        imgSrc.clear();
+        for(int i = 0; i < mItemData.size(); i++) {
+            titles.add(mItemData.get(i).getTitle());
+            descriptions.add(mItemData.get(i).getInfo());
+            prices.add(String.valueOf(mItemData.get(i).getPrice()));
+            imgSrc.add(mItemData.get(i).getImageResource());
+        }
+        outState.putStringArrayList("Titles", titles);
+        outState.putStringArrayList("Descriptions", descriptions);
+        outState.putStringArrayList("Prices", prices);
+        outState.putIntegerArrayList("Images", imgSrc);
     }
 
     /**
@@ -87,35 +122,34 @@ public class MainActivity extends AppCompatActivity {
         // 從 XML 取得 Resource.
         String[] sportsList = getResources().getStringArray(R.array.sports_titles);
         String[] sportsInfo = getResources().getStringArray(R.array.sports_info);
-        String[] itemprice = getResources().getStringArray(R.array.item_price);
+        String[] itemPrice = getResources().getStringArray(R.array.item_price);
         TypedArray ImgResources = getResources().obtainTypedArray(R.array.sports_images);
-
-        String[] newtitle = this.getIntent().getStringArrayExtra("title[]");
-        String[] newdes = this.getIntent().getStringArrayExtra("description[]");
-        String[] newprice = this.getIntent().getStringArrayExtra("price[]");
 
         // 清空 ArrayList.
         mItemData.clear();
 
         // 依 Resource 建構 Item 物件 & 設定所有加入購物車次數為0
         for (int i = 0; i < sportsList.length; i++) {
-            Item obj = new Item(sportsList[i], sportsInfo[i], ImgResources.getResourceId(i, 0),Integer.parseInt(itemprice[i]));
+            Item obj = new Item(sportsList[i], sportsInfo[i], ImgResources.getResourceId(i, 0),Integer.parseInt(itemPrice[i]));
             mItemData.add(obj);
         }
-        if(newtitle!=null){
-            for (int i = 0; i < newtitle.length; i++) {
-                Item newobj = new Item(newtitle[i], newdes[i], ImgResources.getResourceId(i, 0),Integer.parseInt(newprice[i]));
-                mItemData.add(newobj);
-            }
-        }
-
-        /*Item t = new Item("test","damn",ImgResources.getResourceId(0, 0));
-        mItemData.add(t);
-        Item s = new Item("test","damn",ImgResources.getResourceId(0, 0));
-        mItemData.add(s);*/
-        // Recycle the typed array.
         ImgResources.recycle();
+    }
 
+    private void initWithSaveIns(ArrayList<String> T, ArrayList<String> D, ArrayList<String> P, ArrayList<Integer> I) {
+        for(int i = 0; i < T.size(); i++) {
+            Item obj = new Item(T.get(i), D.get(i), I.get(i), Integer.parseInt(P.get(i)));
+            mItemData.add(obj);
+        }
+    }
+
+    private void newItem() {
+        Log.i("Entering newItem()", "Entering newItem()");
+        String nTitle = this.getIntent().getStringExtra("title[]");
+        String nDescription = this.getIntent().getStringExtra("description[]");
+        String nPrice = this.getIntent().getStringExtra("price[]");
+        Item nObj = new Item(nTitle, nDescription, getResources().obtainTypedArray(R.array.sports_images).getResourceId(0, 0), Integer.parseInt(nPrice));
+        mItemData.add(nObj);
     }
 
     //////////////////////////////////////郁鈞打的///////////////////////////////////
@@ -124,8 +158,9 @@ public class MainActivity extends AppCompatActivity {
         SpannableString sb = new SpannableString("    " + title);
         ImageSpan imageSpan = new ImageSpan(r, ImageSpan.ALIGN_BOTTOM);
         sb.setSpan(imageSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        return sb;
+        return sb; //回傳傻逼
     }
+
     /**程式中新增MenuItem選項*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

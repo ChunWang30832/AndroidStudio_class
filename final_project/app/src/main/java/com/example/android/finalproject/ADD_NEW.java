@@ -15,13 +15,13 @@ import java.util.ArrayList;
 
 public class ADD_NEW extends AppCompatActivity {
 
-    private EditText newtitle;
-    private EditText newdes;
-    private EditText newprice;
+    private EditText newTitle;
+    private EditText newDes;
+    private EditText newPrice;
 
-    ArrayList<String> t = new ArrayList<String>();
-    ArrayList<String> d = new ArrayList<String>();
-    ArrayList<String> p = new ArrayList<String>();
+    ArrayList<String> t = new ArrayList<>();
+    ArrayList<String> d = new ArrayList<>();
+    ArrayList<String> p = new ArrayList<>();
     /*public String t[];
     public String d[];
     public String p[];*/
@@ -33,9 +33,9 @@ public class ADD_NEW extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new);
 
-        newtitle = findViewById(R.id.input_title);
-        newdes = findViewById(R.id.input_description);
-        newprice = findViewById(R.id.input_price);
+        newTitle = findViewById(R.id.input_title);
+        newDes = findViewById(R.id.input_description);
+        newPrice = findViewById(R.id.input_price);
 
         Toolbar toolbar = findViewById(R.id.cart_toolbar);
         toolbar.getNavigationIcon().setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
@@ -50,17 +50,16 @@ public class ADD_NEW extends AppCompatActivity {
 
     }
 
-    public void addnewitem(View view) {
+    public void addNewItem(View view) {
 
-        t.add(newtitle.getText().toString());
-        d.add(newdes.getText().toString());
-        p.add(newprice.getText().toString());
-
+        t.add(newTitle.getText().toString());
+        d.add(newDes.getText().toString());
+        p.add(newPrice.getText().toString());
 
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("title[]", t.toArray(new String[0]));
-        intent.putExtra("description[]", d.toArray(new String[0]));
-        intent.putExtra("price[]", p.toArray());
+        intent.putExtra("title[]", newTitle.getText().toString());
+        intent.putExtra("description[]", newDes.getText().toString());
+        intent.putExtra("price[]", newPrice.getText().toString());
 
         this.startActivity(intent);
 
