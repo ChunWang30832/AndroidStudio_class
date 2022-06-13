@@ -210,6 +210,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, cartActivity.class);
         intent.putExtra("ItemString[]", cart.cartItem.toArray(new String[0]));
         intent.putExtra("counts[]", cart.cartCount);
+        intent.putExtra("prices[]", cart.cost);
         this.startActivity(intent);
     }
     /*

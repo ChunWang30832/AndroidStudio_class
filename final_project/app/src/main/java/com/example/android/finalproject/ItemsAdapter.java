@@ -127,7 +127,7 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder>  {
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(context, "已新增物品到購物車", Toast.LENGTH_LONG).show();
-                    MainActivity.cart.Add(curr.getTitle());
+                    MainActivity.cart.Add(curr.getTitle(), curr.getPrice());
                     MainActivity.cart.addCount(curr.getTitle());
                 }
             });
@@ -139,7 +139,7 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder>  {
             // Populate the textviews with data.
             mTitleText.setText(currentItem.getTitle());
             mInfoText.setText(currentItem.getInfo());
-            mprice.setText("Price:"+String.valueOf(currentItem.getPrice())+"$");
+            mprice.setText("Price:" + String.valueOf(currentItem.getPrice())+"$");
 
             // Load the images into the ImageView using the Glide library.
             Glide.with(mContext).load(

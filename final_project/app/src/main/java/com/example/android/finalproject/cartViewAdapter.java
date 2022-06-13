@@ -7,13 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class cartViewAdapter extends RecyclerView.Adapter<cartViewAdapter.cartViewholder> {
 
     private final LayoutInflater mInflater;
     private final LinkedList<String> itemTitle;
-    private final LinkedList<String> itemDescription;
+    private final LinkedList<Integer> itemDescription;
+    private final ArrayList<Integer> prices;
+    private static String count = "數量：";
     public final Context context;
 
     //Holder class
@@ -21,7 +24,7 @@ public class cartViewAdapter extends RecyclerView.Adapter<cartViewAdapter.cartVi
 
         public final TextView wordItemView;
         public final TextView subwordItemView;
-        public final TextView costview;
+        public final TextView costView;
         public final Context context;
         final cartViewAdapter mAdapter;
 
@@ -29,16 +32,17 @@ public class cartViewAdapter extends RecyclerView.Adapter<cartViewAdapter.cartVi
             super(itemView);
             wordItemView = itemView.findViewById(R.id.word);
             subwordItemView = itemView.findViewById(R.id.subword);
-            costview=itemView.findViewById(R.id.cost);
+            costView = itemView.findViewById(R.id.cost);
             this.context = context;
             this.mAdapter = adapter;
         }
     }
 
-    public cartViewAdapter(Context context, LinkedList<String> title, LinkedList<String> subtitle) {
+    public cartViewAdapter(Context context, LinkedList<String> title, LinkedList<Integer> subtitle, ArrayList<Integer> P) {
         mInflater = LayoutInflater.from(context);
         this.itemTitle = title;
         this.itemDescription = subtitle;
+        this.prices = P;
         this.context = context;
     }
 
@@ -52,9 +56,11 @@ public class cartViewAdapter extends RecyclerView.Adapter<cartViewAdapter.cartVi
     @Override
     public void onBindViewHolder(cartViewAdapter.cartViewholder holder, int position) {
         String title = itemTitle.get(position);
-        String subtitle = itemDescription.get(position);
+        String subtitle = count + String.valueOf(itemDescription.get(position));
         holder.wordItemView.setText(title);
         holder.subwordItemView.setText(subtitle);
+        int cost = itemDescription.get(position) * prices.get(position);
+        holder.costView.setText("價格：" + String.valueOf(cost));
     }
 
     @Override

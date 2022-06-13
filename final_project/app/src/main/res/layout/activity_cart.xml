@@ -21,7 +21,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="4dp"
         android:text="Total $ :"
-        android:textSize="40dp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -37,4 +37,32 @@
         app:titleTextColor="#FFFFFF"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="-1dp" />
+
+    <Button
+        android:id="@+id/btn_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="4dp"
+        android:onClick="btn_send_Click"
+        android:text="結帳"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textview_total"
+        app:layout_constraintTop_toBottomOf="@+id/rView"
+        app:layout_constraintVertical_bias="0.333" />
+
+    <Button
+        android:id="@+id/btn_clean"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:onClick="btn_clean_Click"
+        android:text="清除購物車"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintStart_toEndOf="@+id/btn_send"
+        app:layout_constraintTop_toBottomOf="@+id/rView"
+        app:layout_constraintVertical_bias="0.333" />
 </android.support.constraint.ConstraintLayout>
