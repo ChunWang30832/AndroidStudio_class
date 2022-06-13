@@ -21,6 +21,7 @@ public class cartViewAdapter extends RecyclerView.Adapter<cartViewAdapter.cartVi
 
         public final TextView wordItemView;
         public final TextView subwordItemView;
+        public final TextView costview;
         public final Context context;
         final cartViewAdapter mAdapter;
 
@@ -28,6 +29,7 @@ public class cartViewAdapter extends RecyclerView.Adapter<cartViewAdapter.cartVi
             super(itemView);
             wordItemView = itemView.findViewById(R.id.word);
             subwordItemView = itemView.findViewById(R.id.subword);
+            costview=itemView.findViewById(R.id.cost);
             this.context = context;
             this.mAdapter = adapter;
         }

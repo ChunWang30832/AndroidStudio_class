@@ -9,16 +9,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.android.finalproject.cartActivity"
+            android:name=".ADD_NEW"
             android:exported="false" />
-        <activity android:name="com.example.android.finalproject.MainActivity">
+        <activity
+            android:name=".cartActivity"
+            android:exported="false" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.android.finalproject.DetailActivity" />
+        <activity android:name=".DetailActivity" />
     </application>
 
 </manifest>

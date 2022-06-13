@@ -29,6 +29,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -65,6 +66,7 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder>  {
     public ItemsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(mContext).inflate(R.layout.list_item, parent, false);
         ViewHolder viewHolder = new ViewHolder(v);
+        viewHolder.context = mContext;
         return viewHolder;
     }
 
@@ -102,9 +104,11 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder>  {
         private TextView mTitleText;
         private TextView mInfoText;
         private ImageView mSportsImage;
+        private TextView mprice;
         private Button btn;
         private Item curr;
         private int pos;
+        public Context context;
 
         /**
          * Constructor for the ViewHolder, used in onCreateViewHolder().
@@ -116,11 +120,13 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder>  {
             mTitleText = itemView.findViewById(R.id.title);
             mInfoText = itemView.findViewById(R.id.subTitle);
             mSportsImage = itemView.findViewById(R.id.sportsImage);
+            mprice = itemView.findViewById(R.id.price_view);
             btn = itemView.findViewById(R.id.btn_add);
             //Add to Cart 按鈕的 OnClick
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    Toast.makeText(context, "已新增物品到購物車", Toast.LENGTH_LONG).show();
                     MainActivity.cart.Add(curr.getTitle());
                     MainActivity.cart.addCount(curr.getTitle());
                 }
@@ -133,6 +139,7 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder>  {
             // Populate the textviews with data.
             mTitleText.setText(currentItem.getTitle());
             mInfoText.setText(currentItem.getInfo());
+            mprice.setText("Price:"+String.valueOf(currentItem.getPrice())+"$");
 
             // Load the images into the ImageView using the Glide library.
             Glide.with(mContext).load(

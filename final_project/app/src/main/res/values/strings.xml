@@ -38,6 +38,8 @@
         <item>Swimming</item>
         <item>Table Tennis</item>
         <item>Tennis</item>
+        <item>dog</item>
+
     </string-array>
 
     <string-array name="sports_info">
@@ -52,6 +54,23 @@
         <item>Here is some Swimming news!</item>
         <item>Here is some Table Tennis news!</item>
         <item>Here is some Tennis news!</item>
+        <item>What a dorable dog</item>
+
+    </string-array>
+    <string-array name="item_price">
+        <item>100</item>
+        <item>200</item>
+        <item>300</item>
+        <item>400</item>
+        <item>500</item>
+        <item>600</item>
+        <item>700</item>
+        <item>800</item>
+        <item>900</item>
+        <item>1000</item>
+        <item>1100</item>
+        <item>1200</item>
+
     </string-array>
 
 
@@ -67,6 +86,8 @@
         <item>@drawable/img_swimming</item>
         <item>@drawable/img_tabletennis</item>
         <item>@drawable/img_tennis</item>
+        <item>@drawable/dog</item>
+
 
     </array>
 

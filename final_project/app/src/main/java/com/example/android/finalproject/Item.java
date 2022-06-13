@@ -23,6 +23,7 @@ class Item {
 
     private String title;
     private String info;
+    private int price;
     private final int imageResource;
 
     /**
@@ -31,9 +32,10 @@ class Item {
      * @param title The name if the item.
      * @param info Information about the item.
      */
-    public Item(String title, String info, int imageResource) {
+    public Item(String title, String info, int imageResource ,int price) {
         this.title = title;
         this.info = info;
+        this.price=price;
         this.imageResource = imageResource;
     }
 
@@ -44,6 +46,10 @@ class Item {
      */
     String getTitle() {
         return title;
+    }
+
+    int getPrice() {
+        return price;
     }
 
     /**

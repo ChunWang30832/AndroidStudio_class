@@ -6,6 +6,7 @@ public class Cart {
     public ArrayList<String> cartItem;
     public ArrayList<Integer> cartCount; //加入購物車的次數ArrayList
 
+
     public Cart() {
         cartItem = new ArrayList<>();
         cartCount = new ArrayList<>();

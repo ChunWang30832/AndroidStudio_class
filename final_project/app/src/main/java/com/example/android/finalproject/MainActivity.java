@@ -31,6 +31,7 @@ import android.text.style.ImageSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -44,12 +45,20 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private ArrayList<Item> mItemData; //所有Item物件的Data
     private ItemsAdapter mAdapter;
+
+    /*public String newtitle[];
+    public String newdes[];
+    public int newprice[];*/
+
     public static Cart cart;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         Toolbar toolbar = findViewById(R.id.toolbarm);
         setSupportActionBar(toolbar);
@@ -78,17 +87,32 @@ public class MainActivity extends AppCompatActivity {
         // 從 XML 取得 Resource.
         String[] sportsList = getResources().getStringArray(R.array.sports_titles);
         String[] sportsInfo = getResources().getStringArray(R.array.sports_info);
+        String[] itemprice = getResources().getStringArray(R.array.item_price);
         TypedArray ImgResources = getResources().obtainTypedArray(R.array.sports_images);
+
+        String[] newtitle = this.getIntent().getStringArrayExtra("title[]");
+        String[] newdes = this.getIntent().getStringArrayExtra("description[]");
+        String[] newprice = this.getIntent().getStringArrayExtra("price[]");
 
         // 清空 ArrayList.
         mItemData.clear();
 
         // 依 Resource 建構 Item 物件 & 設定所有加入購物車次數為0
         for (int i = 0; i < sportsList.length; i++) {
-            Item obj = new Item(sportsList[i], sportsInfo[i], ImgResources.getResourceId(i, 0));
+            Item obj = new Item(sportsList[i], sportsInfo[i], ImgResources.getResourceId(i, 0),Integer.parseInt(itemprice[i]));
             mItemData.add(obj);
         }
+        if(newtitle!=null){
+            for (int i = 0; i < newtitle.length; i++) {
+                Item newobj = new Item(newtitle[i], newdes[i], ImgResources.getResourceId(i, 0),Integer.parseInt(newprice[i]));
+                mItemData.add(newobj);
+            }
+        }
 
+        /*Item t = new Item("test","damn",ImgResources.getResourceId(0, 0));
+        mItemData.add(t);
+        Item s = new Item("test","damn",ImgResources.getResourceId(0, 0));
+        mItemData.add(s);*/
         // Recycle the typed array.
         ImgResources.recycle();
 
@@ -120,7 +144,9 @@ public class MainActivity extends AppCompatActivity {
         /**取得Item的ItemId，判斷點擊到哪個元件*/
         switch (item.getItemId()){
             case 0:
-                Toast.makeText(this, "新增商品", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, ADD_NEW.class);
+                this.startActivity(intent);
+                //Toast.makeText(this, "新增商品", Toast.LENGTH_SHORT).show();
                 break;
             case 1:
                 Toast.makeText(this, "設定", Toast.LENGTH_SHORT).show();
@@ -151,4 +177,8 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("counts[]", cart.cartCount);
         this.startActivity(intent);
     }
+    /*
+    新增商品
+     */
+
 }
